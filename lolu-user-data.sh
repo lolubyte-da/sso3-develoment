@@ -17,10 +17,6 @@ mkdir -p /home/ec2-user/development && cd /home/ec2-user/development
 
 git init 
 
-git config --global user.name daniel.aboyewa
-
-git config --global user.email info@lolubyte.com
-
 git clone https://github.com/lolubyte-da/sso3-develoment.git .
 
 cd /home/ec2-user/development/sso3-develoment && unzip business-2.zip
