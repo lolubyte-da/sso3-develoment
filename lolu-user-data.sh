@@ -1,20 +1,34 @@
 #!/usr/bin/env bash
 
-# Install Node and Git
+#Patch new instance 
 yum update -y
 
+#Install Apache
+yum install httpd -y
+systemctl enable httpd
+systemctl start httpd
+
+# Install Git and configure git 
 yum install git -y
+
+# Make a development directory
+
+mkdir -p /home/ec2-user/development && cd /home/ec2-user/development
+
+git init 
 
 git config --global user.name daniel.aboyewa
 
 git config --global user.email info@lolubyte.com
 
+git clone https://github.com/lolubyte-da/sso3-develoment.git .
 
-# Make a development directory 
+cd /home/ec2-user/development/sso3-develoment && unzip business-2.zip
 
-mkdir -p /home/ec2-user/development && cd /home/ec2-user/development
+cp -r  /home/ec2-user/development/sso3-develoment/business-2/* /var/www/html/
 
-#git clone git clone https://github.com/lolubyte/ec2-lb-api.git  .
+systemctl restart httpd
+
 
 # Install Dependencies
 #npm install
